@@ -12,4 +12,7 @@
     {% else %}
         <h3>You haven't lists</h3>
     {% endif %}
+    <p>
+        <input value="Add a new list" type="button" onclick="location.href='{% url "list-add" %}'"/>
+    </p>
 {% endblock %}
