@@ -1,5 +1,5 @@
 from django.core.exceptions import PermissionDenied
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from tasks.models import TodoList, TodoItem
 from django.urls import reverse_lazy, reverse
@@ -80,3 +80,10 @@ class TodoItemUpdateView(LoginRequiredMixin, UpdateView):
         form = super().get_form(form_class)
         form.fields['due_date'].widget = forms.SelectDateWidget()
         return form
+
+class TodoListDeleteView(LoginRequiredMixin, DeleteView):
+    model = TodoList
+    success_url = reverse_lazy('index')
+
+    def get_queryset(self):
+        return TodoList.objects.for_user(self.request.user)
