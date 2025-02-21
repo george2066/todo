@@ -1,0 +1,13 @@
+{% extends 'my_greatest_app.html' %}
+
+{% block content %}
+    <h3>{{ title }}</h3>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input value="Submit" type="submit">
+        <input value="Cancel" type="button" onclick="">
+    </form>
+{% endblock %}

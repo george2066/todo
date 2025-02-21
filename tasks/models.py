@@ -22,7 +22,7 @@ class TodoList(models.Model):
     
 class TodoItem(models.Model):
     title = models.CharField(max_length=100)
-    desription = models.CharField(max_length=255, blank=True)
+    description = models.CharField(max_length=255, blank=True)
     create_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField(null = True, blank=True)
 
