@@ -1,0 +1,10 @@
+{% extends 'my_greatest_app.html' %}
+{% block content %}
+    <h3>Delete item</h3>
+    <p>Are you sure want to delete {{ object.title }} from list {{ todo_list.title }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input value="Delete" type="submit">
+        <input value="Cancel" type="button" onclick="location.href='{% url "list" todo_list.id %}'" >
+    </form>
+{% endblock %}
